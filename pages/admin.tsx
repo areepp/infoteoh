@@ -1,11 +1,4 @@
-import Link from 'next/link'
-import { useState } from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
 import TryoutList from '../components/Index/TryoutList'
-import { BiSortAlt2 } from 'react-icons/bi'
-import OutsideClickHandler from 'react-outside-click-handler'
-import SortOption from '../components/Index/SortOption'
 
 const data = [
   {
@@ -40,37 +33,25 @@ const data = [
   },
 ]
 
-const Home = () => {
+const Admin = () => {
   return (
-    <div className="bg-canvas min-h-screen">
-      <Header
-        title="infoteoh"
-        desc="Website buat para klean yang pengen nyari info TO gratis."
-        indexPage
-      />
+    <div className="min-h-screen bg-canvas">
+      <header className="p-4">
+        <h1 className="text-4xl">admin</h1>
+      </header>
 
-      {/* BODY */}
       <main className="mt-20">
-        <SortOption />
-        {/* LIST TO */}
+        <div className="flex w-full justify-end">
+          <button className="mr-4">oldest</button>
+        </div>
         <div>
           {data.map((data) => (
             <TryoutList {...data} key={data.title} />
           ))}
         </div>
-
-        <p className="p-4">
-          Ikut berkontribusi dengan menambahkan info try-out yang belum ada di
-          list,{' '}
-          <Link className="underline" href="/tambah-tryout">
-            di sini
-          </Link>
-        </p>
       </main>
-
-      <Footer />
     </div>
   )
 }
 
-export default Home
+export default Admin
