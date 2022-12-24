@@ -1,11 +1,13 @@
 import Link from 'next/link'
-import { useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import TryoutList from '../components/Index/TryoutList'
-import { BiSortAlt2 } from 'react-icons/bi'
-import OutsideClickHandler from 'react-outside-click-handler'
 import SortOption from '../components/Index/SortOption'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import * as tryoutService from '../services/tryout.service'
+import { useEffect } from 'react'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../services/firebase-client'
 
 const data = [
   {
@@ -41,6 +43,12 @@ const data = [
 ]
 
 const Home = () => {
+  const [value, loading, error] = useCollectionData(
+    tryoutService.getPublishedTryouts(),
+  )
+
+  if (value) console.log(value)
+
   return (
     <div className="bg-canvas min-h-screen">
       <Header
@@ -53,11 +61,14 @@ const Home = () => {
       <main className="mt-20">
         <SortOption />
         {/* LIST TO */}
-        <div>
-          {data.map((data) => (
-            <TryoutList {...data} key={data.title} />
-          ))}
-        </div>
+        {false && <span>loading...</span>}
+        {true && (
+          <div>
+            {data.map((data) => (
+              <TryoutList {...data} key={data.title} />
+            ))}
+          </div>
+        )}
 
         <p className="p-4">
           Ikut berkontribusi dengan menambahkan info try-out yang belum ada di
