@@ -4,10 +4,8 @@ import Header from '../components/Header'
 import TryoutList from '../components/Index/TryoutList'
 import SortOption from '../components/Index/SortOption'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
-import * as tryoutService from '../services/tryout.service'
-import { useEffect } from 'react'
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../services/firebase-client'
+import * as tryoutService from '../lib/tryout.service'
+import { ITryout } from '../lib/tryout.service'
 
 const data = [
   {
@@ -61,11 +59,19 @@ const Home = () => {
       <main className="mt-20">
         <SortOption />
         {/* LIST TO */}
-        {false && <span>loading...</span>}
-        {true && (
+        {loading && <span>loading...</span>}
+        {value && (
           <div>
-            {data.map((data) => (
-              <TryoutList {...data} key={data.title} />
+            {value.map((data) => (
+              <TryoutList
+                key={data.link}
+                judul={data.judul}
+                mulaiPendaftaran={data.mulaiPendaftaran}
+                akhirPendaftaran={data.akhirPendaftaran}
+                mulaiPengerjaan={data.mulaiPengerjaan}
+                akhirPengerjaan={data.akhirPengerjaan}
+                link={data.link}
+              />
             ))}
           </div>
         )}

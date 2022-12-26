@@ -12,6 +12,11 @@ const SortOption = () => {
 
   return (
     <div className="relative flex w-full justify-end">
+      {/* <select>
+        <option value="Pendaftaran terdekat">Pendaftaran terdekat</option>
+        <option value="Pendaftaran terdekat">Pendaftaran terdekat</option>
+
+      </select> */}
       <button
         onClick={() => setIsSortOptionVisible(!isSortOptionVisible)}
         className="mr-4 flex items-center"
