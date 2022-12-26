@@ -6,6 +6,9 @@ import SortOption from '../components/Index/SortOption'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import * as tryoutService from '../lib/tryout.service'
 import { ITryout } from '../lib/tryout.service'
+import { useState } from 'react'
+import { QuerySnapshot } from 'firebase/firestore'
+import { ISortMethods, sortMethods } from '../utils/sortMethods'
 
 const data = [
   {
@@ -44,8 +47,9 @@ const Home = () => {
   const [value, loading, error] = useCollectionData(
     tryoutService.getPublishedTryouts(),
   )
-
-  if (value) console.log(value)
+  const [sortState, setSortState] = useState<
+    'pendaftaranTerdekat' | 'pengerjaanTerdekat'
+  >('pendaftaranTerdekat')
 
   return (
     <div className="bg-canvas min-h-screen">
@@ -57,14 +61,14 @@ const Home = () => {
 
       {/* BODY */}
       <main className="mt-20">
-        <SortOption />
+        <SortOption setSortState={setSortState} />
         {/* LIST TO */}
         {loading && <span>loading...</span>}
         {value && (
           <div>
-            {value.map((data) => (
+            {value.sort((sortMethods as any)[sortState].method).map((data) => (
               <TryoutList
-                key={data.link}
+                key={data.id}
                 judul={data.judul}
                 mulaiPendaftaran={data.mulaiPendaftaran}
                 akhirPendaftaran={data.akhirPendaftaran}

@@ -2,38 +2,31 @@ import { useState } from 'react'
 import { BiSortAlt2 } from 'react-icons/bi'
 import OutsideClickHandler from 'react-outside-click-handler'
 
-type TSortOption = 'Pendaftaran terdekat' | 'Pengerjaan terdekat'
+interface Props {
+  setSortState: React.Dispatch<
+    React.SetStateAction<'pendaftaranTerdekat' | 'pengerjaanTerdekat'>
+  >
+}
 
-const SortOption = () => {
-  const [isSortOptionVisible, setIsSortOptionVisible] = useState(false)
-  const [selectedSortOption, setSelectedSortOption] = useState<TSortOption>(
-    'Pendaftaran terdekat',
-  )
-
+const SortOption = ({ setSortState }: Props) => {
   return (
     <div className="relative flex w-full justify-end">
-      {/* <select>
-        <option value="Pendaftaran terdekat">Pendaftaran terdekat</option>
-        <option value="Pendaftaran terdekat">Pendaftaran terdekat</option>
-
-      </select> */}
-      <button
-        onClick={() => setIsSortOptionVisible(!isSortOptionVisible)}
-        className="mr-4 flex items-center"
-      >
+      <div className="mr-4 flex items-center">
         <BiSortAlt2 />
-        <span className="ml-1">{selectedSortOption}</span>
-      </button>
-      {isSortOptionVisible && (
-        <OutsideClickHandler
-          onOutsideClick={() => setIsSortOptionVisible(false)}
+
+        <select
+          className="bg-transparent focus:outline-none"
+          defaultValue={'Pendaftaran terdekat'}
+          onChange={(e) =>
+            setSortState(
+              e.target.value as 'pendaftaranTerdekat' | 'pengerjaanTerdekat',
+            )
+          }
         >
-          <div className="z-10 bg-canvas absolute top-full right-8 border border-primary">
-            <div>Pendaftaran terdekat</div>
-            <div>Pengerjaan terdekat</div>
-          </div>
-        </OutsideClickHandler>
-      )}
+          <option value="pendaftaranTerdekat">Pendaftaran terdekat</option>
+          <option value="pengerjaanTerdekat">Pengerjaan terdekat</option>
+        </select>
+      </div>
     </div>
   )
 }
