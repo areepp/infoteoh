@@ -29,3 +29,19 @@ export const formatDeadline = (start: string, end: string) => {
 export const replaceSlashWithDash = (date: string) => {
   return date.replace(/\//g, '-')
 }
+
+export const isInThePast = (date: Date) => {
+  const today = new Date()
+
+  today.setHours(0, 0, 0, 0)
+
+  return date < today
+}
+
+export const isMoreThanAMonthAgo = (date: Date) => {
+  const oneMonthAgo = new Date()
+  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)
+  oneMonthAgo.setHours(0, 0, 0, 0)
+
+  return date < oneMonthAgo
+}

@@ -7,6 +7,9 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import * as tryoutService from '../lib/tryout.service'
 import { useState } from 'react'
 import { sortMethods } from '../utils/sortMethods'
+import { isInThePast, isMoreThanAMonthAgo } from '../utils/dateHelper'
+import { ITryout } from '../lib/tryout.service'
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 
 const Home = () => {
   const [value, loading, error] = useCollectionData(
@@ -15,6 +18,22 @@ const Home = () => {
   const [sortState, setSortState] = useState<
     'pendaftaranTerdekat' | 'pengerjaanTerdekat'
   >('pendaftaranTerdekat')
+  const [pastTryoutsVisible, setPastTryoutsVisible] = useState(false)
+
+  // remove past tryouts
+  let filteredTryouts: ITryout[] | undefined = value?.filter(
+    (tryout) => !isInThePast(new Date(tryout.akhirPendaftaran)),
+  )
+
+  // past tryouts (max one month ago)
+  let pastTryouts: ITryout[] | undefined = value?.filter((tryout) => {
+    const akhirPendaftaranDate = new Date(tryout.akhirPendaftaran)
+    if (isInThePast(akhirPendaftaranDate)) {
+      if (isMoreThanAMonthAgo(akhirPendaftaranDate)) return false
+      return true
+    }
+    return false
+  })
 
   return (
     <div className="bg-canvas min-h-screen">
@@ -29,19 +48,49 @@ const Home = () => {
         <SortOption setSortState={setSortState} />
         {/* LIST TO */}
         {loading && <span>loading...</span>}
-        {value && (
+        {filteredTryouts && (
           <div>
-            {value.sort((sortMethods as any)[sortState].method).map((data) => (
-              <TryoutList
-                key={data.id}
-                penyelenggara={data.penyelenggara}
-                mulaiPendaftaran={data.mulaiPendaftaran}
-                akhirPendaftaran={data.akhirPendaftaran}
-                mulaiPengerjaan={data.mulaiPengerjaan}
-                akhirPengerjaan={data.akhirPengerjaan}
-                link={data.link}
-              />
-            ))}
+            {filteredTryouts
+              .sort((sortMethods as any)[sortState].method)
+              .map((data) => (
+                <TryoutList
+                  key={data.id}
+                  penyelenggara={data.penyelenggara}
+                  mulaiPendaftaran={data.mulaiPendaftaran}
+                  akhirPendaftaran={data.akhirPendaftaran}
+                  mulaiPengerjaan={data.mulaiPengerjaan}
+                  akhirPengerjaan={data.akhirPengerjaan}
+                  link={data.link}
+                />
+              ))}
+          </div>
+        )}
+
+        <button
+          onClick={() => setPastTryoutsVisible(!pastTryoutsVisible)}
+          className="ml-4 mt-4 flex items-center text-placeholder"
+        >
+          <span>Terlewat</span>{' '}
+          {pastTryoutsVisible ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+        </button>
+
+        {pastTryoutsVisible && (
+          <div>
+            {pastTryouts &&
+              pastTryouts
+                .sort((sortMethods as any)[sortState].method)
+                .map((data) => (
+                  <TryoutList
+                    key={data.id}
+                    penyelenggara={data.penyelenggara}
+                    mulaiPendaftaran={data.mulaiPendaftaran}
+                    akhirPendaftaran={data.akhirPendaftaran}
+                    mulaiPengerjaan={data.mulaiPengerjaan}
+                    akhirPengerjaan={data.akhirPengerjaan}
+                    link={data.link}
+                    isPast
+                  />
+                ))}
           </div>
         )}
 
