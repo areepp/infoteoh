@@ -3,9 +3,7 @@ import { BiSortAlt2 } from 'react-icons/bi'
 interface Props {
   setSortState: React.Dispatch<React.SetStateAction<'oldest' | 'newest'>>
   setFilterState: React.Dispatch<
-    React.SetStateAction<
-      'needAction' | 'published' | 'rejected' | 'pastDeadline' | 'all'
-    >
+    React.SetStateAction<'needAction' | 'published' | 'pastDeadline' | 'all'>
   >
 }
 
@@ -23,7 +21,6 @@ const AdminSortOption = ({ setSortState, setFilterState }: Props) => {
                 e.target.value as
                   | 'needAction'
                   | 'published'
-                  | 'rejected'
                   | 'pastDeadline'
                   | 'all',
               )
@@ -31,7 +28,6 @@ const AdminSortOption = ({ setSortState, setFilterState }: Props) => {
           >
             <option value="needAction">need action</option>
             <option value="published">published</option>
-            <option value="rejected">rejected</option>
             <option value="pastDeadline">past deadline</option>
             <option value="all">all</option>
           </select>

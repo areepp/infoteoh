@@ -27,7 +27,7 @@ export interface ITryout {
   mulaiPengerjaan: string
   akhirPengerjaan: string
   link: string
-  status: 'published' | 'pastDeadline' | 'rejected' | 'needAction'
+  status: 'published' | 'pastDeadline' | 'needAction'
   publishedAt: Timestamp
 }
 
@@ -77,7 +77,7 @@ export const uploadTryout = (data: Omit<ITryout, 'id'>) =>
 
 // ADMIN
 
-export const editStatus = (id: string, status: 'published' | 'rejected') =>
-  updateDoc(doc(db, 'tryouts', id), { status })
+export const editStatusPublished = (id: string) =>
+  updateDoc(doc(db, 'tryouts', id), { status: 'published' })
 
 export const deleteTryout = (id: string) => deleteDoc(doc(db, 'tryouts', id))

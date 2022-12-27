@@ -37,47 +37,20 @@ const Home = () => {
 
   return (
     <div className="bg-canvas min-h-screen">
-      <Header
-        title="infoteoh"
-        desc="Website buat para klean yang pengen nyari info TO gratis."
-        indexPage
-      />
-
-      {/* BODY */}
-      <main className="mt-20">
-        <SortOption setSortState={setSortState} />
-        {/* LIST TO */}
-        {loading && <span>loading...</span>}
-        {filteredTryouts && (
-          <div>
-            {filteredTryouts
-              .sort((sortMethods as any)[sortState].method)
-              .map((data) => (
-                <TryoutList
-                  key={data.id}
-                  penyelenggara={data.penyelenggara}
-                  mulaiPendaftaran={data.mulaiPendaftaran}
-                  akhirPendaftaran={data.akhirPendaftaran}
-                  mulaiPengerjaan={data.mulaiPengerjaan}
-                  akhirPengerjaan={data.akhirPengerjaan}
-                  link={data.link}
-                />
-              ))}
-          </div>
-        )}
-
-        <button
-          onClick={() => setPastTryoutsVisible(!pastTryoutsVisible)}
-          className="ml-4 mt-4 flex items-center text-placeholder"
-        >
-          <span>Terlewat</span>{' '}
-          {pastTryoutsVisible ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
-        </button>
-
-        {pastTryoutsVisible && (
-          <div>
-            {pastTryouts &&
-              pastTryouts
+      <div className="container mx-auto lg:px-16">
+        <Header
+          title="infoteoh"
+          desc="Website buat para klean yang pengen nyari info TO gratis."
+          indexPage
+        />
+        {/* BODY */}
+        <main className="mt-20 md:mt-10">
+          <SortOption setSortState={setSortState} />
+          {/* LIST TO */}
+          {loading && <span>loading...</span>}
+          {filteredTryouts && (
+            <div>
+              {filteredTryouts
                 .sort((sortMethods as any)[sortState].method)
                 .map((data) => (
                   <TryoutList
@@ -88,22 +61,55 @@ const Home = () => {
                     mulaiPengerjaan={data.mulaiPengerjaan}
                     akhirPengerjaan={data.akhirPengerjaan}
                     link={data.link}
-                    isPast
                   />
                 ))}
-          </div>
-        )}
-
-        <p className="p-4">
-          Ikut berkontribusi dengan menambahkan info try-out yang belum ada di
-          list,{' '}
-          <Link className="underline" href="/tambah-tryout">
-            di sini
-          </Link>
-        </p>
-      </main>
-
-      <Footer />
+            </div>
+          )}
+          <button
+            onClick={() => setPastTryoutsVisible(!pastTryoutsVisible)}
+            className="ml-4 mt-4 flex items-center text-placeholder"
+          >
+            <span>Terlewat</span>{' '}
+            {pastTryoutsVisible ? (
+              <MdKeyboardArrowUp />
+            ) : (
+              <MdKeyboardArrowDown />
+            )}
+          </button>
+          {pastTryoutsVisible && (
+            <div>
+              {pastTryouts &&
+                pastTryouts
+                  .sort((sortMethods as any)[sortState].method)
+                  .map((data) => (
+                    <TryoutList
+                      key={data.id}
+                      penyelenggara={data.penyelenggara}
+                      mulaiPendaftaran={data.mulaiPendaftaran}
+                      akhirPendaftaran={data.akhirPendaftaran}
+                      mulaiPengerjaan={data.mulaiPengerjaan}
+                      akhirPengerjaan={data.akhirPengerjaan}
+                      link={data.link}
+                      isPast
+                    />
+                  ))}
+              <div className="p-4">
+                <span className="text-xs text-placeholder">
+                  range terlewat satu bulan yang lalu
+                </span>
+              </div>
+            </div>
+          )}
+          <p className="p-4">
+            Ikut berkontribusi dengan menambahkan info try-out yang belum ada di
+            list,{' '}
+            <Link className="underline" href="/tambah-tryout">
+              di sini
+            </Link>
+          </p>
+        </main>
+        <Footer />
+      </div>
     </div>
   )
 }

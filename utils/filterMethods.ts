@@ -7,9 +7,6 @@ export const filterMethods = {
   published: {
     method: (item: ITryout) => item.status === 'published',
   },
-  rejected: {
-    method: (item: ITryout) => item.status === 'rejected',
-  },
   pastDeadline: {
     method: (item: ITryout) => item.status === 'pastDeadline',
   },

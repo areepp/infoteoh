@@ -16,11 +16,6 @@ const AdminTryoutList = (props: ITryout) => {
     publishedAt,
   } = props
 
-  const ableToDelete = () => {
-    if (status === 'rejected' || status === 'pastDeadline') return true
-    return false
-  }
-
   return (
     <div className="mt-2 p-4 border-t border-primary last:border-b">
       <h2 className="font-bold">{penyelenggara}</h2>

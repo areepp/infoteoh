@@ -3,7 +3,7 @@ import * as tryoutService from '../../lib/tryout.service'
 const Publish = ({ id }: { id: string }) => {
   const publish = async () => {
     if (confirm('yakin publish?')) {
-      await tryoutService.editStatus(id, 'published')
+      await tryoutService.editStatusPublished(id)
     } else {
       return
     }

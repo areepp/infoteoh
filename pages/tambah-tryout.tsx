@@ -75,86 +75,84 @@ const TambahTryout = () => {
 
   return (
     <div className="bg-canvas min-h-screen">
-      <Header
-        title="infoteoh"
-        desc="Website buat para klean yang pengen nyari info TO gratis"
-      />
-      <main className="mt-16 p-4">
-        <h2 className="text-lg">Tambah info try-out baru</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
-          <Input
-            id="penyelenggara"
-            register={register}
-            labelText="Penyelenggara"
-            placeholder="ex. Pahamify, Ruangguru #15"
-            errors={errors}
-          />
-
-          <Input
-            id="link"
-            register={register}
-            labelText="Link postingan instagram / twitter"
-            placeholder="url"
-            errors={errors}
-          />
-
-          <div className="mt-4">
-            <label>Deadline pendaftaran</label>
-            <DateInput
-              control={control}
-              id="mulaiPendaftaranDate"
-              placeholder="dari tanggal"
+      <div className="container mx-auto lg:px-16">
+        <Header
+          title="infoteoh"
+          desc="Website buat para klean yang pengen nyari info TO gratis"
+        />
+        <main className="mt-16 p-4">
+          <h2 className="text-lg">Tambah info try-out baru</h2>
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
+            <Input
+              id="penyelenggara"
+              register={register}
+              labelText="Penyelenggara"
+              placeholder="ex. Pahamify, Ruangguru #15"
+              errors={errors}
             />
-            <DateInput
-              control={control}
-              id="akhirPendaftaranDate"
-              placeholder="sampai tanggal"
-              addMarginTop
+            <Input
+              id="link"
+              register={register}
+              labelText="Link postingan instagram / twitter"
+              placeholder="url"
+              errors={errors}
             />
-            {checkFormError(
-              errors.mulaiPendaftaranDate,
-              errors.akhirPendaftaranDate,
-            ) && <span className="text-xs">lengkapi data ini</span>}
+            <div className="mt-4">
+              <label>Deadline pendaftaran</label>
+              <DateInput
+                control={control}
+                id="mulaiPendaftaranDate"
+                placeholder="dari tanggal"
+              />
+              <DateInput
+                control={control}
+                id="akhirPendaftaranDate"
+                placeholder="sampai tanggal"
+                addMarginTop
+              />
+              {checkFormError(
+                errors.mulaiPendaftaranDate,
+                errors.akhirPendaftaranDate,
+              ) && <span className="text-xs">lengkapi data ini</span>}
+            </div>
+            <div className="mt-4">
+              <label>Deadline pengerjaan</label>
+              <DateInput
+                control={control}
+                id="mulaiPengerjaanDate"
+                placeholder="dari tanggal"
+              />
+              <DateInput
+                control={control}
+                id="akhirPengerjaanDate"
+                placeholder="sampai tanggal"
+                addMarginTop
+              />
+              {checkFormError(
+                errors.mulaiPengerjaanDate,
+                errors.akhirPengerjaanDate,
+              ) && <span className="text-xs">lengkapi data ini</span>}
+            </div>
+            <button
+              className="mt-4 min-w-[80px] bg-primary text-canvas px-3 py-2 rounded"
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? <Spinner /> : 'Submit'}
+            </button>
+            {Object.keys(errors).length !== 0 && (
+              <span className="ml-4 text-xs">
+                data masih ada yang belum lengkap
+              </span>
+            )}
+          </form>
+          {successMessage && <p className="mt-4">{successMessage}</p>}
+          <div className="mt-10 flex items-center">
+            <IoIosArrowRoundBack className="text-lg" />
+            <Link href="/">halaman utama</Link>
           </div>
-
-          <div className="mt-4">
-            <label>Deadline pengerjaan</label>
-            <DateInput
-              control={control}
-              id="mulaiPengerjaanDate"
-              placeholder="dari tanggal"
-            />
-            <DateInput
-              control={control}
-              id="akhirPengerjaanDate"
-              placeholder="sampai tanggal"
-              addMarginTop
-            />
-            {checkFormError(
-              errors.mulaiPengerjaanDate,
-              errors.akhirPengerjaanDate,
-            ) && <span className="text-xs">lengkapi data ini</span>}
-          </div>
-
-          <button
-            className="mt-4 min-w-[80px] bg-primary text-canvas px-3 py-2 rounded"
-            type="submit"
-            disabled={isLoading}
-          >
-            {isLoading ? <Spinner /> : 'Submit'}
-          </button>
-          {Object.keys(errors).length !== 0 && (
-            <span className="ml-4 text-xs">
-              data masih ada yang belum lengkap
-            </span>
-          )}
-        </form>
-        {successMessage && <p className="mt-4">{successMessage}</p>}
-        <div className="mt-10 flex items-center">
-          <IoIosArrowRoundBack className="text-lg" />
-          <Link href="/">halaman utama</Link>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   )
 }

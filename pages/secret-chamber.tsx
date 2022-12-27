@@ -13,7 +13,7 @@ const Admin = () => {
   )
   const [sortState, setSortState] = useState<'oldest' | 'newest'>('oldest')
   const [filterState, setFilterState] = useState<
-    'needAction' | 'published' | 'rejected' | 'pastDeadline' | 'all'
+    'needAction' | 'published' | 'pastDeadline' | 'all'
   >('needAction')
 
   let filteredValue
