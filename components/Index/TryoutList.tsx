@@ -1,7 +1,7 @@
 import { formatDeadline } from '../../utils/dateHelper'
 
 interface Props {
-  judul: string
+  penyelenggara: string
   mulaiPendaftaran: string
   akhirPendaftaran: string
   mulaiPengerjaan: string
@@ -11,7 +11,7 @@ interface Props {
 
 const TryoutList = (props: Props) => {
   const {
-    judul,
+    penyelenggara,
     mulaiPendaftaran,
     akhirPendaftaran,
     mulaiPengerjaan,
@@ -21,7 +21,7 @@ const TryoutList = (props: Props) => {
 
   return (
     <div className="mt-2 p-4 border-t border-primary last:border-b">
-      <h2 className="font-bold">{judul}</h2>
+      <h2 className="font-bold">{penyelenggara}</h2>
       <p>Pendaftaran: {formatDeadline(mulaiPendaftaran, akhirPendaftaran)}</p>
       <p>Pengerjaan: {formatDeadline(mulaiPengerjaan, akhirPengerjaan)}</p>
       <a className="underline" href={link} target="_blank" rel="noreferrer">

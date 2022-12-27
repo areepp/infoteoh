@@ -25,3 +25,7 @@ export const formatDeadline = (start: string, end: string) => {
     return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${endYear}`
   }
 }
+
+export const replaceSlashWithDash = (date: string) => {
+  return date.replace(/\//g, '-')
+}

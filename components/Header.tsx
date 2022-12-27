@@ -9,7 +9,9 @@ interface Props {
 const Header = ({ title, desc, indexPage }: Props) => {
   return (
     <header className="p-4">
-      <h1 className="text-4xl">{title}</h1>
+      <Link className="cursor-pointer" href="/">
+        <h1 className="text-4xl">{title}</h1>
+      </Link>
       <p className="text-lg">{desc}</p>
       {indexPage && (
         <div className="mt-8">

@@ -69,7 +69,7 @@ const Home = () => {
             {value.sort((sortMethods as any)[sortState].method).map((data) => (
               <TryoutList
                 key={data.id}
-                judul={data.judul}
+                penyelenggara={data.penyelenggara}
                 mulaiPendaftaran={data.mulaiPendaftaran}
                 akhirPendaftaran={data.akhirPendaftaran}
                 mulaiPengerjaan={data.mulaiPengerjaan}

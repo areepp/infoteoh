@@ -7,3 +7,7 @@
     @apply font-karla text-primary;
   }
 }
+
+.react-datepicker__input-container input {
+  @apply w-full bg-inherit p-1 pl-2 rounded border border-primary focus:outline-none placeholder:text-xs placeholder:text-placeholder;
+}

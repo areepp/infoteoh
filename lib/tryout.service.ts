@@ -1,4 +1,5 @@
 import {
+  addDoc,
   collection,
   DocumentData,
   FirestoreDataConverter,
@@ -13,18 +14,19 @@ import { db } from './firebase-client'
 
 export interface ITryout {
   id: string
-  judul: string
+  penyelenggara: string
   mulaiPendaftaran: string
   akhirPendaftaran: string
   mulaiPengerjaan: string
   akhirPengerjaan: string
   link: string
+  status: 'published' | 'pastDeadline' | 'rejected' | 'needAction'
 }
 
 const tryoutConverter: FirestoreDataConverter<ITryout> = {
   toFirestore(tryout: WithFieldValue<ITryout>): DocumentData {
     return {
-      judul: tryout.judul,
+      penyelenggara: tryout.penyelenggara,
       mulaiPendaftaran: tryout.mulaiPendaftaran,
       akhirPendaftaran: tryout.akhirPendaftaran,
       mulaiPengerjaan: tryout.mulaiPengerjaan,
@@ -39,12 +41,13 @@ const tryoutConverter: FirestoreDataConverter<ITryout> = {
     const data = snapshot.data(options)
     return {
       id: snapshot.id,
-      judul: data.judul,
+      penyelenggara: data.penyelenggara,
       mulaiPendaftaran: data.mulaiPendaftaran,
       akhirPendaftaran: data.akhirPendaftaran,
       mulaiPengerjaan: data.mulaiPengerjaan,
       akhirPengerjaan: data.akhirPengerjaan,
       link: data.link,
+      status: data.link,
     }
   },
 }
@@ -54,3 +57,6 @@ export const getPublishedTryouts = () =>
     collection(db, 'tryouts'),
     where('status', '==', 'published'),
   ).withConverter(tryoutConverter)
+
+export const uploadTryout = (data: Omit<ITryout, 'id'>) =>
+  addDoc(collection(db, 'tryouts'), data)
