@@ -5,30 +5,41 @@ import * as tryoutService from '../lib/tryout.service'
 import AdminSortOption from '../components/Admin/AdminSortOption'
 import { useState } from 'react'
 import { sortMethods } from '../utils/sortMethods'
+import { filterMethods } from '../utils/filterMethods'
 
 const Admin = () => {
   const [value, loading, error] = useCollectionData(
     tryoutService.getAllTryouts(),
   )
   const [sortState, setSortState] = useState<'oldest' | 'newest'>('oldest')
+  const [filterState, setFilterState] = useState<
+    'needAction' | 'published' | 'rejected' | 'pastDeadline' | 'all'
+  >('needAction')
 
-  console.log(value)
+  let filteredValue
+
+  if (value) {
+    filteredValue = value.filter((filterMethods as any)[filterState].method)
+  }
+
   return (
     <div className="min-h-screen bg-canvas">
       <Header title="admin" desc="admin only" />
 
       <main className="mt-20">
-        <AdminSortOption setSortState={setSortState} />
-        {value && value.sort((sortMethods as any)[sortState].method) && (
-          <div>
-            {value.map((data) => (
-              <AdminTryoutList {...data} key={data.id} />
-            ))}
-          </div>
-        )}
+        <AdminSortOption
+          setFilterState={setFilterState}
+          setSortState={setSortState}
+        />
+        {filteredValue &&
+          filteredValue
+            .sort((sortMethods as any)[sortState].method)
+            .map((data) => <AdminTryoutList {...data} key={data.id} />)}
       </main>
     </div>
   )
 }
+
+// .filter((filterMethods as any)[filterState].method)
 
 export default Admin

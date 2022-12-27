@@ -16,8 +16,6 @@ const AdminTryoutList = (props: ITryout) => {
     publishedAt,
   } = props
 
-  console.log(publishedAt.toDate())
-
   const ableToDelete = () => {
     if (status === 'rejected' || status === 'pastDeadline') return true
     return false

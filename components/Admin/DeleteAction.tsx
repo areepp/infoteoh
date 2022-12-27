@@ -7,7 +7,7 @@ const DeleteAction = ({ id }: { id: string }) => {
 
   return (
     <button
-      className="block px-2 py-1 rounded bg-red-600 text-white "
+      className="block px-2 py-1 rounded bg-red-600 text-white text-xs"
       onClick={deleteTryout}
     >
       Delete

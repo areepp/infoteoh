@@ -1,10 +1,5 @@
 import { ITryout } from '../lib/tryout.service'
 
-export interface ISortMethods {
-  pendaftaranTerdekat: { method: () => number }
-  pengerjaanterdekat: { method: () => number }
-}
-
 export const sortMethods = {
   pendaftaranTerdekat: {
     method: (a: ITryout, b: ITryout) =>

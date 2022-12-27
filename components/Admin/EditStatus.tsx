@@ -13,13 +13,13 @@ const EditStatus = ({ id }: { id: string }) => {
     <div>
       <button
         onClick={reject}
-        className="px-2 py-1 rounded bg-canvas border border-primary box-border cursor-pointer"
+        className="px-2 py-1 rounded bg-canvas border border-primary text-xs cursor-pointer"
       >
         reject
       </button>
       <button
         onClick={publish}
-        className="ml-2 px-2 py-1 rounded bg-primary border border-canvas text-canvas cursor-pointer"
+        className="ml-2 px-2 py-1 rounded bg-primary border border-canvas text-canvas text-xs cursor-pointer"
       >
         publish
       </button>

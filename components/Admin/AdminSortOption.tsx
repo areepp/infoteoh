@@ -2,9 +2,14 @@ import { BiSortAlt2 } from 'react-icons/bi'
 
 interface Props {
   setSortState: React.Dispatch<React.SetStateAction<'oldest' | 'newest'>>
+  setFilterState: React.Dispatch<
+    React.SetStateAction<
+      'needAction' | 'published' | 'rejected' | 'pastDeadline' | 'all'
+    >
+  >
 }
 
-const AdminSortOption = ({ setSortState }: Props) => {
+const AdminSortOption = ({ setSortState, setFilterState }: Props) => {
   return (
     <div className="px-4 flex w-full justify-between text-sm">
       <div className="flex">
@@ -13,6 +18,16 @@ const AdminSortOption = ({ setSortState }: Props) => {
           <select
             className="bg-transparent focus:outline-none"
             defaultValue={'needAction'}
+            onChange={(e) =>
+              setFilterState(
+                e.target.value as
+                  | 'needAction'
+                  | 'published'
+                  | 'rejected'
+                  | 'pastDeadline'
+                  | 'all',
+              )
+            }
           >
             <option value="needAction">need action</option>
             <option value="published">published</option>
