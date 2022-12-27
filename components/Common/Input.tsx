@@ -6,20 +6,20 @@ interface InputProps {
   register: UseFormRegister<FormInputs>
   id:
     | 'penyelenggara'
-    | 'mulaiPendaftaran'
-    | 'akhirPendaftaran'
-    | 'mulaiPengerjaan'
-    | 'akhirPengerjaan'
+    | 'mulaiPendaftaranDate'
+    | 'akhirPendaftaranDate'
+    | 'mulaiPengerjaanDate'
+    | 'akhirPengerjaanDate'
     | 'link'
   labelText: string
   placeholder: string
   errors: Partial<
     FieldErrorsImpl<{
       penyelenggara: string
-      mulaiPendaftaran: Date
-      akhirPendaftaran: Date
-      mulaiPengerjaan: Date
-      akhirPengerjaan: Date
+      mulaiPendaftaranDate: Date
+      akhirPendaftaranDate: Date
+      mulaiPengerjaanDate: Date
+      akhirPengerjaanDate: Date
       link: string
     }>
   >
