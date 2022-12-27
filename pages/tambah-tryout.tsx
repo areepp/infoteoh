@@ -11,6 +11,7 @@ import Link from 'next/link'
 
 import 'react-datepicker/dist/react-datepicker.css'
 import Spinner from '../components/Common/Spinner'
+import { serverTimestamp, Timestamp } from 'firebase/firestore'
 
 export interface FormInputs {
   penyelenggara: string
@@ -62,11 +63,12 @@ const TambahTryout = () => {
       mulaiPengerjaan,
       akhirPengerjaan,
       status: 'needAction',
+      publishedAt: serverTimestamp() as Timestamp,
     })
 
     setIsLoading(false)
     setSuccessMessage(
-      'Makasih udah menambahkan info tryout baru! Info yang kamu tambahkan bakal dikonfirmasi dulu oleh admin sebelum dipublish.',
+      'Makasih udah menambahkan info tryout baru! Info yang barusan kamu tambahin bakal dikonfirmasi dulu sebelum dipublish.',
     )
     reset()
   }

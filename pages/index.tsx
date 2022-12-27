@@ -5,43 +5,8 @@ import TryoutList from '../components/Index/TryoutList'
 import SortOption from '../components/Index/SortOption'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import * as tryoutService from '../lib/tryout.service'
-import { ITryout } from '../lib/tryout.service'
 import { useState } from 'react'
-import { QuerySnapshot } from 'firebase/firestore'
-import { ISortMethods, sortMethods } from '../utils/sortMethods'
-
-const data = [
-  {
-    title: 'Pahamify #33',
-    pendaftaran: 'Pendaftaran 3-7 Januari 2023',
-    pengerjaan: 'Pengerjaan 31 - 37 Desember 2022',
-    linkedPost: '#',
-  },
-  {
-    title: 'Zenius #156',
-    pendaftaran: 'Pendaftaran 3-7 Januari 2023',
-    pengerjaan: 'Pengerjaan 31 - 37 Desember 2022',
-    linkedPost: '#',
-  },
-  {
-    title: 'Ruangguru #78',
-    pendaftaran: 'Pendaftaran 3-7 Januari 2023',
-    pengerjaan: 'Pengerjaan 31 - 37 Desember 2022',
-    linkedPost: '#',
-  },
-  {
-    title: 'Eduka',
-    pendaftaran: 'Pendaftaran 3-7 Januari 2023',
-    pengerjaan: 'Pengerjaan 31 - 37 Desember 2022',
-    linkedPost: '#',
-  },
-  {
-    title: 'Lah kok TO CPNS',
-    pendaftaran: 'Pendaftaran 3-7 Januari 2023',
-    pengerjaan: 'Pengerjaan 31 - 37 Desember 2022',
-    linkedPost: '#',
-  },
-]
+import { sortMethods } from '../utils/sortMethods'
 
 const Home = () => {
   const [value, loading, error] = useCollectionData(

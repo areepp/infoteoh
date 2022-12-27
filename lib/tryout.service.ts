@@ -1,12 +1,19 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   DocumentData,
+  FieldValue,
   FirestoreDataConverter,
+  getDocs,
   query,
   QueryDocumentSnapshot,
   QuerySnapshot,
+  setDoc,
   SnapshotOptions,
+  Timestamp,
+  updateDoc,
   where,
   WithFieldValue,
 } from 'firebase/firestore'
@@ -21,6 +28,7 @@ export interface ITryout {
   akhirPengerjaan: string
   link: string
   status: 'published' | 'pastDeadline' | 'rejected' | 'needAction'
+  publishedAt: Timestamp
 }
 
 const tryoutConverter: FirestoreDataConverter<ITryout> = {
@@ -32,6 +40,8 @@ const tryoutConverter: FirestoreDataConverter<ITryout> = {
       mulaiPengerjaan: tryout.mulaiPengerjaan,
       akhirPengerjaan: tryout.akhirPengerjaan,
       link: tryout.link,
+      status: tryout.status,
+      publishedAt: tryout.publishedAt,
     }
   },
   fromFirestore(
@@ -47,7 +57,8 @@ const tryoutConverter: FirestoreDataConverter<ITryout> = {
       mulaiPengerjaan: data.mulaiPengerjaan,
       akhirPengerjaan: data.akhirPengerjaan,
       link: data.link,
-      status: data.link,
+      status: data.status,
+      publishedAt: data.publishedAt,
     }
   },
 }
@@ -58,5 +69,15 @@ export const getPublishedTryouts = () =>
     where('status', '==', 'published'),
   ).withConverter(tryoutConverter)
 
+export const getAllTryouts = () =>
+  query(collection(db, 'tryouts')).withConverter(tryoutConverter)
+
 export const uploadTryout = (data: Omit<ITryout, 'id'>) =>
   addDoc(collection(db, 'tryouts'), data)
+
+// ADMIN
+
+export const editStatus = (id: string, status: 'published' | 'rejected') =>
+  updateDoc(doc(db, 'tryouts', id), { status })
+
+export const deleteTryout = (id: string) => deleteDoc(doc(db, 'tryouts', id))

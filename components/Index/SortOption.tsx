@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import { BiSortAlt2 } from 'react-icons/bi'
-import OutsideClickHandler from 'react-outside-click-handler'
 
 interface Props {
   setSortState: React.Dispatch<
@@ -10,7 +8,7 @@ interface Props {
 
 const SortOption = ({ setSortState }: Props) => {
   return (
-    <div className="relative flex w-full justify-end">
+    <div className="flex w-full justify-end">
       <div className="mr-4 flex items-center">
         <BiSortAlt2 />
 
