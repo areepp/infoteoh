@@ -10,6 +10,7 @@ import { sortMethods } from '../utils/sortMethods'
 import { isInThePast, isMoreThanAMonthAgo } from '../utils/dateHelper'
 import { ITryout } from '../lib/tryout.service'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
+import Spinner from '../components/Common/Spinner'
 
 const Home = () => {
   const [value, loading, error] = useCollectionData(
@@ -47,9 +48,13 @@ const Home = () => {
         <main className="mt-20 md:mt-10">
           <SortOption setSortState={setSortState} />
           {/* LIST TO */}
-          {loading && <span>loading...</span>}
+          {loading && (
+            <div className="px-4">
+              <Spinner />
+            </div>
+          )}
           {filteredTryouts && (
-            <div>
+            <div className="px-4">
               {filteredTryouts
                 .sort((sortMethods as any)[sortState].method)
                 .map((data) => (

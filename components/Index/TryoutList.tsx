@@ -23,7 +23,7 @@ const TryoutList = (props: Props) => {
 
   return (
     <div
-      className={`mt-2 p-4 border-t first:border-none last:border-b ${
+      className={`mt-2 py-4 border-t first:border-none last:border-b ${
         isPast
           ? 'text-placeholder border-secondary'
           : 'text-primary border-primary'
