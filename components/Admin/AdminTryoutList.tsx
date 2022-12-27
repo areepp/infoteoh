@@ -1,7 +1,7 @@
 import { ITryout } from '../../lib/tryout.service'
 import { formatDeadline } from '../../utils/dateHelper'
 import DeleteAction from './DeleteAction'
-import NeedAction from './EditStatus'
+import Publish from './Publish'
 
 const AdminTryoutList = (props: ITryout) => {
   const {
@@ -33,8 +33,8 @@ const AdminTryoutList = (props: ITryout) => {
         {link}
       </a>
 
-      {status === 'needAction' && <NeedAction id={id} />}
-      {ableToDelete() && <DeleteAction id={id} />}
+      {status === 'needAction' && <Publish id={id} />}
+      <DeleteAction id={id} />
     </div>
   )
 }
