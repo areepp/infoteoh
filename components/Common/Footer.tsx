@@ -1,0 +1,32 @@
+const Footer = () => {
+  return (
+    <footer className="mt-60 w-full flex flex-col items-center justify-center pb-4 text-sm">
+      <p className="">
+        dibuat oleh{' '}
+        <a
+          className="underline cursor-pointer"
+          target="_blank"
+          rel="noreferrer"
+          href="https://twitter.com/arepkesleo"
+        >
+          arep
+        </a>
+      </p>
+      <p className="mt-2 text-center px-4 md:max-w-4xl">
+        <a
+          className="underline"
+          href="https://twitter.com/messages/compose?recipient_id=1559028123559010306&text=websitemu%20keren,%20aku%20mau%20transfer%20duit%20175%20juta%20boleh%20nggk"
+          target="_blank"
+          rel="noreferrer"
+        >
+          DM gw
+        </a>{' '}
+        klo misalkan nemu kendala, punya masukan, ato mungkin sekadar tanya2
+        tentang gimana rasanya kuliah di MIT. (gw ngga kuliah MIT sih
+        sebenernya, tapi kalo mau tanya silakan, siapa tau gw gabisa jawab).
+      </p>
+    </footer>
+  )
+}
+
+export default Footer

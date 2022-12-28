@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import Input from '../components/Common/Input'
-import Header from '../components/Header'
+import Header from '../components/Common/Header'
 import DateInput from '../components/Common/DateInput'
 import { checkFormError } from '../utils/checkFormError'
 import { replaceSlashWithDash } from '../utils/dateHelper'
@@ -80,7 +80,7 @@ const TambahTryout = () => {
           title="infoteoh"
           desc="Website buat para klean yang pengen nyari info TO gratis"
         />
-        <main className="mt-16 p-4">
+        <main className="mt-16 px-4">
           <h2 className="text-lg">Tambah info try-out baru</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
             <Input

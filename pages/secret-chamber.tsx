@@ -1,5 +1,5 @@
 import { useCollectionData } from 'react-firebase-hooks/firestore'
-import Header from '../components/Header'
+import Header from '../components/Common/Header'
 import AdminTryoutList from '../components/Admin/AdminTryoutList'
 import * as tryoutService from '../lib/tryout.service'
 import AdminSortOption from '../components/Admin/AdminSortOption'
@@ -26,7 +26,7 @@ const Admin = () => {
     <div className="min-h-screen bg-canvas">
       <Header title="admin" desc="admin only" />
 
-      <main className="mt-20">
+      <main className="mt-20 px-4">
         <AdminSortOption
           setFilterState={setFilterState}
           setSortState={setSortState}

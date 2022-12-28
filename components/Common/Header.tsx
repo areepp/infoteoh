@@ -18,8 +18,8 @@ const Header = ({ title, desc, indexPage }: Props) => {
       {indexPage && (
         <div className="mt-8 md:mt-16 xl:mt-24">
           <span>
-            Klo misal kamu tau ada TO gratis tapi belum ada di list di bawah,
-            tlg kasih tau yhhh,{' '}
+            Klo misal kamu tau ada info TO gratis tapi belum ada di list di
+            bawah, tlg kasih tau yhhh,{' '}
           </span>
           <Link href="/tambah-tryout" className="underline">
             lewat sini.

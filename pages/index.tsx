@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
+import Footer from '../components/Common/Footer'
+import Header from '../components/Common/Header'
 import TryoutList from '../components/Index/TryoutList'
 import SortOption from '../components/Index/SortOption'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
@@ -41,20 +41,20 @@ const Home = () => {
       <div className="container mx-auto lg:px-16">
         <Header
           title="infoteoh"
-          desc="Website buat para klean yang pengen nyari info TO gratis."
+          desc="Website buat para klean yang pengen nyari info TO SNBT gratis."
           indexPage
         />
         {/* BODY */}
-        <main className="mt-20 md:mt-10">
+        <main className="mt-20 md:mt-10 px-4">
           <SortOption setSortState={setSortState} />
           {/* LIST TO */}
           {loading && (
-            <div className="px-4">
+            <div className="">
               <Spinner />
             </div>
           )}
           {filteredTryouts && (
-            <div className="px-4">
+            <div className="">
               {filteredTryouts
                 .sort((sortMethods as any)[sortState].method)
                 .map((data) => (
@@ -72,7 +72,7 @@ const Home = () => {
           )}
           <button
             onClick={() => setPastTryoutsVisible(!pastTryoutsVisible)}
-            className="ml-4 mt-4 flex items-center text-placeholder"
+            className=" mt-4 flex items-center text-placeholder"
           >
             <span>Terlewat</span>{' '}
             {pastTryoutsVisible ? (
@@ -82,7 +82,7 @@ const Home = () => {
             )}
           </button>
           {pastTryoutsVisible && (
-            <div>
+            <div className="">
               {pastTryouts &&
                 pastTryouts
                   .sort((sortMethods as any)[sortState].method)
@@ -98,20 +98,13 @@ const Home = () => {
                       isPast
                     />
                   ))}
-              <div className="p-4">
+              <div className="">
                 <span className="text-xs text-placeholder">
                   range terlewat satu bulan yang lalu
                 </span>
               </div>
             </div>
           )}
-          <p className="p-4">
-            Ikut berkontribusi dengan menambahkan info try-out yang belum ada di
-            list,{' '}
-            <Link className="underline" href="/tambah-tryout">
-              di sini
-            </Link>
-          </p>
         </main>
         <Footer />
       </div>
