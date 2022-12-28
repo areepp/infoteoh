@@ -12,7 +12,7 @@ const Footer = () => {
           arep
         </a>
       </p>
-      <p className="mt-2 text-center px-4 md:max-w-4xl">
+      <p className="mt-2 px-4 md:max-w-4xl text-justify">
         <a
           className="underline"
           href="https://twitter.com/messages/compose?recipient_id=1559028123559010306&text=websitemu%20keren,%20aku%20mau%20transfer%20duit%20175%20juta%20boleh%20nggk"

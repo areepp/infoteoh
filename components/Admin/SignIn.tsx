@@ -33,7 +33,7 @@ const SignIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="mt-4 w-full pl-2 p-1 rounded bg-inherit border border-primary focus:outline-none placeholder:text-xs placeholder:text-placeholder"
-          type="text"
+          type="password"
         />
         <button
           className="mt-4 px-3 py-2 text-sm border border-primary rounded"
