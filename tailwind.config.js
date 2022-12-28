@@ -15,6 +15,7 @@ module.exports = {
       },
       fontFamily: {
         karla: ['Karla', ...defaultTheme.fontFamily.sans],
+        'source-code': ['"Source Code Pro"', ...defaultTheme.fontFamily.mono],
       },
     },
   },
