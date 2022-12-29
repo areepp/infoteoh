@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Footer from '../components/Common/Footer'
 import Header from '../components/Common/Header'
 import TryoutList from '../components/Index/TryoutList'
@@ -11,6 +10,7 @@ import { isInThePast, isMoreThanAMonthAgo } from '../utils/dateHelper'
 import { ITryout } from '../lib/tryout.service'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import Spinner from '../components/Common/Spinner'
+import Head from 'next/head'
 
 const Home = () => {
   const [value, loading, error] = useCollectionData(
@@ -37,54 +37,35 @@ const Home = () => {
   })
 
   return (
-    <div className="bg-canvas min-h-screen">
-      <div className="container mx-auto lg:px-16">
-        <Header
-          title="infoteoh"
-          desc="Website buat para klean yang pengen nyari info TO SNBT gratis."
-          indexPage
+    <>
+      <Head>
+        <title>infoteoh | info TO SNBT gratis</title>
+        <meta
+          name="description"
+          content="infoteoh merupakan website yang menyediakan informasi tryout-tryout SNBT gratis."
         />
-        {/* BODY */}
-        <main className="mt-20 md:mt-10 px-4">
-          <SortOption setSortState={setSortState} />
-          {/* LIST TO */}
-          {loading && (
-            <div className="">
-              <Spinner />
-            </div>
-          )}
-          {filteredTryouts && (
-            <div className="">
-              {filteredTryouts
-                .sort((sortMethods as any)[sortState].method)
-                .map((data) => (
-                  <TryoutList
-                    key={data.id}
-                    penyelenggara={data.penyelenggara}
-                    mulaiPendaftaran={data.mulaiPendaftaran}
-                    akhirPendaftaran={data.akhirPendaftaran}
-                    mulaiPengerjaan={data.mulaiPengerjaan}
-                    akhirPengerjaan={data.akhirPengerjaan}
-                    link={data.link}
-                  />
-                ))}
-            </div>
-          )}
-          <button
-            onClick={() => setPastTryoutsVisible(!pastTryoutsVisible)}
-            className=" mt-4 flex items-center text-placeholder"
-          >
-            <span>Terlewat</span>{' '}
-            {pastTryoutsVisible ? (
-              <MdKeyboardArrowUp />
-            ) : (
-              <MdKeyboardArrowDown />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google" content="notranslate" key="notranslate" />
+      </Head>
+      <div className="bg-canvas min-h-screen">
+        <div className="container mx-auto lg:px-16">
+          <Header
+            title="infoteoh"
+            desc="Website buat para klean yang pengen nyari info TO SNBT gratis."
+            indexPage
+          />
+          {/* BODY */}
+          <main className="mt-20 md:mt-10 px-4">
+            <SortOption setSortState={setSortState} />
+            {/* LIST TO */}
+            {loading && (
+              <div className="">
+                <Spinner />
+              </div>
             )}
-          </button>
-          {pastTryoutsVisible && (
-            <div className="">
-              {pastTryouts &&
-                pastTryouts
+            {filteredTryouts && (
+              <div className="">
+                {filteredTryouts
                   .sort((sortMethods as any)[sortState].method)
                   .map((data) => (
                     <TryoutList
@@ -95,20 +76,50 @@ const Home = () => {
                       mulaiPengerjaan={data.mulaiPengerjaan}
                       akhirPengerjaan={data.akhirPengerjaan}
                       link={data.link}
-                      isPast
                     />
                   ))}
-              <div className="">
-                <span className="text-xs text-placeholder">
-                  range terlewat satu bulan yang lalu
-                </span>
               </div>
-            </div>
-          )}
-        </main>
-        {!loading && <Footer />}
+            )}
+            <button
+              onClick={() => setPastTryoutsVisible(!pastTryoutsVisible)}
+              className=" mt-4 flex items-center text-placeholder"
+            >
+              <span>Terlewat</span>{' '}
+              {pastTryoutsVisible ? (
+                <MdKeyboardArrowUp />
+              ) : (
+                <MdKeyboardArrowDown />
+              )}
+            </button>
+            {pastTryoutsVisible && (
+              <div className="">
+                {pastTryouts &&
+                  pastTryouts
+                    .sort((sortMethods as any)[sortState].method)
+                    .map((data) => (
+                      <TryoutList
+                        key={data.id}
+                        penyelenggara={data.penyelenggara}
+                        mulaiPendaftaran={data.mulaiPendaftaran}
+                        akhirPendaftaran={data.akhirPendaftaran}
+                        mulaiPengerjaan={data.mulaiPengerjaan}
+                        akhirPengerjaan={data.akhirPengerjaan}
+                        link={data.link}
+                        isPast
+                      />
+                    ))}
+                <div className="">
+                  <span className="text-xs text-placeholder">
+                    range terlewat satu bulan yang lalu
+                  </span>
+                </div>
+              </div>
+            )}
+          </main>
+          {!loading && <Footer />}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
