@@ -38,6 +38,16 @@ export const isInThePast = (date: Date) => {
   return date < today
 }
 
+export const isToday = (date: Date) => {
+  const today = new Date()
+
+  if (today.toDateString() === date.toDateString()) {
+    return true
+  }
+
+  return false
+}
+
 export const isMoreThanAMonthAgo = (date: Date) => {
   const oneMonthAgo = new Date()
   oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)

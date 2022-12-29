@@ -106,7 +106,7 @@ const Home = () => {
             </div>
           )}
         </main>
-        <Footer />
+        {!loading && <Footer />}
       </div>
     </div>
   )
