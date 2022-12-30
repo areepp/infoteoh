@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="mt-60 w-full flex flex-col items-center justify-center pb-4 text-sm">
-      <p className="">
+    <footer className="h-[80px] w-full flex flex-col items-center justify-center pb-4 text-sm">
+      {/* <p className="">
         dibuat oleh{' '}
         <a
           className="underline cursor-pointer"
@@ -11,7 +11,7 @@ const Footer = () => {
         >
           arep
         </a>
-      </p>
+      </p> */}
       <p className="mt-2 px-4 md:max-w-4xl text-justify">
         <a
           className="underline"

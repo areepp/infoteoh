@@ -11,6 +11,7 @@ import { ITryout } from '../lib/tryout.service'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import Spinner from '../components/Common/Spinner'
 import Head from 'next/head'
+import Link from 'next/link'
 
 const Home = () => {
   const [value, loading, error] = useCollectionData(
@@ -48,14 +49,23 @@ const Home = () => {
         <meta name="google" content="notranslate" key="notranslate" />
       </Head>
       <div className="bg-canvas min-h-screen">
-        <div className="container mx-auto lg:px-16">
+        <div className="flex flex-col container mx-auto h-full min-h-screen lg:px-16">
           <Header
             title="infoteoh"
             desc="Website buat para klean yang pengen nyari info TO SNBT gratis."
-            indexPage
           />
           {/* BODY */}
-          <main className="mt-20 md:mt-10 px-4">
+          <main className="flex-1 mt-20 mb-20 md:mt-10 px-4">
+            <div className="mt-8 md:mt-16 xl:mt-24">
+              <span>
+                Klo misal kamu tau ada info TO gratis tapi belum ada di list di
+                bawah, tlg kasih tau yhhh,{' '}
+              </span>
+              <Link href="/tambah-tryout" className="underline">
+                lewat sini.
+              </Link>
+              <span> Makasihh :)</span>
+            </div>
             <SortOption setSortState={setSortState} />
             {/* LIST TO */}
             {loading && (

@@ -8,7 +8,7 @@ interface Props {
 
 const SortOption = ({ setSortState }: Props) => {
   return (
-    <div className="flex w-full justify-end">
+    <div className="mt-12 flex w-full justify-end">
       <div className="mr-4 flex items-center">
         <BiSortAlt2 />
 
