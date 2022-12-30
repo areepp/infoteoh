@@ -58,10 +58,13 @@ const Home = () => {
           <main className="flex-1 mt-20 mb-20 md:mt-10 px-4">
             <div className="mt-8 md:mt-16 xl:mt-24">
               <span>
-                Klo misal kamu tau ada info TO gratis tapi belum ada di list di
-                bawah, tlg kasih tau yhhh,{' '}
+                Ikut berkontribusi dengan menambahkan info tryout yang belum ada
+                di list di bawah{' '}
               </span>
-              <Link href="/tambah-tryout" className="underline">
+              <Link
+                href="/tambah-tryout"
+                className="underline hover:bg-primary hover:text-canvas hover:no-underline rounded transition-all"
+              >
                 lewat sini.
               </Link>
               <span> Makasihh :)</span>
@@ -105,7 +108,7 @@ const Home = () => {
               <div className="">
                 {pastTryouts &&
                   pastTryouts
-                    .sort((sortMethods as any)[sortState].method)
+                    .sort((sortMethods as any)['pendaftaranTerdekat'].method)
                     .map((data) => (
                       <TryoutList
                         key={data.id}

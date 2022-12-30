@@ -23,7 +23,7 @@ const Footer = () => {
         </a>{' '}
         klo misalkan nemu kendala, punya masukan, ato mungkin sekadar tanya2
         tentang gimana rasanya kuliah di MIT. (gw ngga kuliah MIT sih
-        sebenernya, tapi kalo mau tanya silakan, siapa tau gw gabisa jawab).
+        sebenernya, tapi kalo mau tanya silakan, siapa tau gw gabisa jawab)
       </p>
     </footer>
   )
