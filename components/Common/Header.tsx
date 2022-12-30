@@ -10,7 +10,7 @@ const Header = ({ title, desc, indexPage }: Props) => {
   return (
     <header className="p-4 min-h-[130px]">
       <Link className="cursor-pointer" href="/">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl hover:text-green-400 transtion-all duration-300">
           {title}
         </h1>
       </Link>

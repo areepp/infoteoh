@@ -140,7 +140,7 @@ const TambahTryout = () => {
                 ) && <span className="text-xs">lengkapi data ini</span>}
               </div>
               <button
-                className="mt-4 min-w-[80px] bg-primary text-canvas px-3 py-2 rounded"
+                className="mt-4 min-w-[80px] bg-primary text-canvas px-3 py-2 rounded hover:shadow-xl hover:text-white hover:bg-green-600 transition-all duration-300"
                 type="submit"
                 disabled={isLoading}
               >

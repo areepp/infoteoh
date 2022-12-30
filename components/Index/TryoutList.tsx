@@ -32,7 +32,12 @@ const TryoutList = (props: Props) => {
       <h2 className="font-bold">{penyelenggara}</h2>
       <p>Pendaftaran: {formatDeadline(mulaiPendaftaran, akhirPendaftaran)}</p>
       <p>Pengerjaan: {formatDeadline(mulaiPengerjaan, akhirPengerjaan)}</p>
-      <a className="underline" href={link} target="_blank" rel="noreferrer">
+      <a
+        className="underline hover:bg-primary hover:text-canvas hover:no-underline rounded transition-all"
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+      >
         link post instagram / twitter
       </a>
     </div>

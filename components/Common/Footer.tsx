@@ -19,11 +19,11 @@ const Footer = () => {
           target="_blank"
           rel="noreferrer"
         >
-          DM gw
+          DM aku
         </a>{' '}
         klo misalkan nemu kendala, punya masukan, ato mungkin sekadar tanya2
-        tentang gimana rasanya kuliah di MIT. (gw ngga kuliah MIT sih
-        sebenernya, tapi kalo mau tanya silakan, siapa tau gw gabisa jawab)
+        tentang gimana rasanya kuliah di MIT. (aku ngga kuliah MIT sih
+        sebenernya, tapi kalo mau tanya silakan, siapa tau aku gabisa jawab)
       </p>
     </footer>
   )

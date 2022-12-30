@@ -32,13 +32,21 @@ export default function Document() {
           name="twitter:image"
           content="https://www.infoteoh.com/logo_infoteoh.png"
         />
+        <meta
+          name="twitter:description"
+          content="kumpulan info tryout snbt gratis"
+        />
         <meta property="og:title" content="infoteoh" />
         <meta
           property="og:description"
           content="kumpulan info tryout snbt gratis"
         />
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.infoteoh.com/" />
+        <meta
+          property="og:image"
+          content="https://www.infoteoh.com/logo_infoteoh.png"
+        />
       </Head>
       <body>
         <Main />

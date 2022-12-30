@@ -63,7 +63,7 @@ const Home = () => {
               </span>
               <Link
                 href="/tambah-tryout"
-                className="underline hover:bg-primary hover:text-canvas hover:no-underline rounded transition-all"
+                className="underline hover:bg-primary hover:text-canvas hover:no-underline rounded transition-all duration-300"
               >
                 lewat sini.
               </Link>
