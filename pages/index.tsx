@@ -14,9 +14,10 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 const Home = () => {
-  const [value, loading, error] = useCollectionData(
+  const [value, loading] = useCollectionData(
     tryoutService.getPublishedTryouts(),
   )
+
   const [sortState, setSortState] = useState<
     'pendaftaranTerdekat' | 'pengerjaanTerdekat'
   >('pendaftaranTerdekat')
@@ -95,7 +96,7 @@ const Home = () => {
             )}
             <button
               onClick={() => setPastTryoutsVisible(!pastTryoutsVisible)}
-              className=" mt-4 flex items-center text-placeholder"
+              className="mt-4 flex items-center text-placeholder"
             >
               <span>Terlewat</span>{' '}
               {pastTryoutsVisible ? (

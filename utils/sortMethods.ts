@@ -1,6 +1,4 @@
-import { isToday } from 'date-fns'
 import { ITryout } from '../lib/tryout.service'
-import { isInThePast } from './dateHelper'
 
 export const sortMethods = {
   pendaftaranTerdekat: {

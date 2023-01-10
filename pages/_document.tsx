@@ -32,6 +32,7 @@ export default function Document() {
           name="twitter:image"
           content="https://www.infoteoh.com/logo_infoteoh.png"
         />
+        <meta name="twitter:title" content="infoteoh" />
         <meta
           name="twitter:description"
           content="kumpulan info tryout snbt gratis"

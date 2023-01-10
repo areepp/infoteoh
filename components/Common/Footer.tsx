@@ -1,18 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="h-[80px] w-full flex flex-col items-center justify-center pb-4 text-sm">
-      {/* <p className="">
-        dibuat oleh{' '}
-        <a
-          className="underline cursor-pointer"
-          target="_blank"
-          rel="noreferrer"
-          href="https://twitter.com/arepkesleo"
-        >
-          arep
-        </a>
-      </p> */}
-      <p className="mt-2 px-4 md:max-w-4xl text-justify">
+    <footer className="h-[80px] mt-40 w-full flex flex-col items-center justify-center pb-12 text-xs">
+      <p className="px-4 md:max-w-4xl text-justify">
         <a
           className="underline"
           href="https://twitter.com/messages/compose?recipient_id=1559028123559010306&text=websitemu%20keren%20bangeeetttt,%20aku%20mau%20transfer%20duid%20175%20juta%20boleh%20nggk"
