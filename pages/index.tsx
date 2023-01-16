@@ -1,4 +1,3 @@
-import Footer from '../components/Common/Footer'
 import Header from '../components/Common/Header'
 import TryoutList from '../components/Index/TryoutList'
 import SortOption from '../components/Index/SortOption'
@@ -130,7 +129,6 @@ const Home = () => {
               </div>
             )}
           </main>
-          {!loading && <Footer />}
         </div>
       </div>
     </>
